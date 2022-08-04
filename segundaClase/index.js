@@ -36,6 +36,7 @@ const pcMove = () => {
 };
 
 const opcionesGanadoras = () => {
+  //opciones de mensaje para la jugada
   const mensajes = ['Pierde usuario', 'Empate', 'Gana Usuario'];
 
   //matriz de opciones de jugada
