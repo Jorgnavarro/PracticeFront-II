@@ -1,0 +1,40 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body{
+  font-family: sans-serif;
+}
+main{
+  background-color: rgb(207, 207, 207);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button{
+  padding: 20px 50px;
+  font-size: 1.5rem;
+  border-radius: 50vh;
+  cursor: pointer;
+  border: none;
+}
+
+button:hover{
+  background-color: aliceblue;
+}
+form{
+  margin-top: 10px;
+}
+
+/* ----------------------------- estilos oscuros ---------------------------- */
+.dark main{
+  background-color: rgb(20, 20, 20);
+}
+.dark button{
+  background-color: rgb(63, 63, 63);
+  color: white;
+}
