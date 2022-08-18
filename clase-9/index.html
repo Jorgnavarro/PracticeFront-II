@@ -1,25 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- link a libreria fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- nuestros propios estilos -->
+  <link href="./css/styles.css" rel="stylesheet">
+  <title>Spotyfront</title>
+
+  <!-- diferimos la ejecucion del script posterior al analisis de todo el HTML -->
+  <!-- 📍 https://cybmeta.com/wp-content/uploads/2018/01/defer-y-async.png -->
+  <script src="./js/index.js" defer></script>
 </head>
+
 <body>
-    <header><h1>El Nacional</h1></header>
-    <main>
-        <div class="n-nacional">
-            <h2>Noticias Nacionales</h2>
-        </div>
-        <div class="n-internacional">
-            <h2>Noticias Internacionales</h2>
-        </div>
-        
-    </main>
-    <footer>Reportero: Andrea Hernandez</footer>
-    <script src="./noticias.js"></script>
-    <script src="./index.js"></script>
+
+  <header>
+    <img id="logo" src="./img/logo-blanco.png" alt="logo spotifront">
+    <div class="perfil">
+      <h5>PERFIL</h5>
+      <h2 id="nombreUsuario">Nombre usuario</h2>
+      <p>
+        <span id="cant-albums">0  álbumes</span> en tu listado - En total <span id="cant-favoritos">0 favoritos</span> 
+      </p>
+    </div>
+  </header>
+
+  <div class="listado">
+    <h3>Tus selecciones:</h3>
+    <ul class="covers">
+      <!-- lista de los covers -->     
+    </ul>
+  </div>
+  
 </body>
+
 </html>
