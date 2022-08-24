@@ -2,6 +2,8 @@ const formulario = document.querySelector('form');
 const nombre = document.querySelector('#nombre');
 const pass = document.querySelector('#pass');
 const tel = document.querySelector('#tel');
+
+// const hobbies = document.querySelectorAll('[name="hobbies"]');
 const hobbies = document.getElementsByName('hobbies');
 const nacionalidad = document.getElementsByName('nacionalidad');
 
@@ -10,36 +12,25 @@ const persona = {
     pass: "",
     tel: "",
     hobbies: [],
-    nac: ""
-}
+    nacionalidad: ""
+};
 
-formulario.addEventListener('submit', function(evento){
+formulario.addEventListener('submit', (evento) => {
     evento.preventDefault();
 
     persona.nombre = normalizarNombre(nombre.value);
-    persona.pass = pass.value;
-    persona.tel = tel.value;
+    persona.pass = eliminarEspacios(pass.value);
+    persona.tel = eliminarEspacios(tel.value);
 
-    hobbies.forEach( (hobbie, i) => {
-        const labels = document.querySelectorAll('fieldset label')
-        if(hobbie.checked){
-            console.log(hobbie.id)
-            console.log(labels[i])
-        }
-    })
-    nacionalidad.forEach( pais => {
-        if(pais.checked){
-            console.log(pais.id)
-        }
-    })
+    //const hobbies = document.querySelectorAll('input[name="hobbies"]:checked');
 
-    console.table(persona)
+    hobbies.forEach(hobbie => {
+        console.log(hobbie.id, hobbie)
+    });
 
-    // limpiamos los campos
-    formulario.reset();
-    
+
+    console.log(document.querySelector('input[name="nacionalidad"]:checked'))
 });
 
-function normalizarNombre(nombre) {
-    return nombre.toUpperCase();
-}
+const normalizarNombre = (value) => value.trim().toLowerCase();
+const eliminarEspacios = (value) => value.trim();
