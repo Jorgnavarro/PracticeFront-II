@@ -5,7 +5,7 @@ const tel = document.querySelector('#tel');
 const pelis = document.querySelector('#peliculas');
 
 //const hobbies = document.getElementsByName('hobbies');
-//const nacionalidad = document.getElementsByName('nacionalidad');
+const nacionalidad = document.getElementsByName('nacionalidad');
 
 const persona = {
     nombre: "",
@@ -19,29 +19,32 @@ const persona = {
 formulario.addEventListener('submit', (evento) => {
     evento.preventDefault();
 
-    persona.nombre = normalizarNombre(nombre.value);
+    persona.nombre = normalizarTexto(nombre.value);
     persona.pass = eliminarEspacios(pass.value);
     persona.tel = eliminarEspacios(tel.value);
 
-    const peliculas = normalizarNombre(pelis.value).split(',')
-    persona.peliculas = peliculas
+    persona.peliculas = normalizarTexto(pelis.value).split(',')
 
-    // hobbies.forEach((hobbie) => {
-    //     if(hobbie.checked) {
-    //         let text = document.querySelector(`label[for=${hobbie.id}]`)
-    //         persona.hobbies.push(text.innerText)
-    //     }
-    // })
-
-    const hobbies = document.querySelectorAll('input[name="hobbies"]:checked')
+    const hobbies = document.querySelectorAll('input[name="hobbies"]:checked');
     hobbies.forEach(hobbie => {
-        let text = document.querySelector(`label[for=${hobbie.id}]`)
-        persona.hobbies.push(text.innerText)
+        //document.querySelector(`label[for="${hobbie.id}"]`).innerText
+        //hobbie.parentElement.innerText => <label >VideoJuegos <input /></label>
+
+        persona.hobbies.push(hobbie.id.replace('hobbies',''))
+    })
+
+    nacionalidad.forEach(pais => {
+        if(pais.checked){
+            persona.nacionalidad = pais.id.replace('nacionalidad','')
+        }
     });
 
-    const nacionalidad = document.querySelector('input[name="nacionalidad"]:checked')
-    const pais = document.querySelector(`label[for=${nacionalidad.id}]`)
-    persona.nacionalidad = pais.innerText
+    // const pais = document.querySelectorAll('input[name="nacionalidad"]:checked');
+    // persona.nacionalidad = pais.id.replace('nacionalidad','');
 
-    console.log(persona)
+    console.log(persona);
+    formulario.reset();
 });
+
+const normalizarTexto = (value) => value.trim().toLowerCase();
+const eliminarEspacios = (value) => value.trim();
