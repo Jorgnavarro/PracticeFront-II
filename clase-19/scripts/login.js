@@ -13,14 +13,13 @@ window.addEventListener('load', function () {
     /* -------------------------------------------------------------------------- */
     form.addEventListener('submit', function (event) {
         event.preventDefault();
-       
+
         const persona = {
             email: email.value,
             password: password.value
-        }
+        };
 
-       // llamamos a a funcion para loggearnos
-       realizarLogin(persona)
+        realizarLogin(persona)
     });
 
 
@@ -29,49 +28,37 @@ window.addEventListener('load', function () {
     /* -------------------------------------------------------------------------- */
     function realizarLogin(settings) {
         const url = 'https://ctd-todo-api.herokuapp.com/v1/users/login';
-
+        
         const config = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(settings),
-        };
+            body: JSON.stringify(settings)
+        }
 
         fetch(url, config)
-        .then(res => res.json())
-        .then(data => {
+            .then((res) => res.json())
+            .then(data => {
+                if(data.jwt) {
+                    localStorage.setItem('jwt', data.jwt);
 
-            if(data.jwt) {
-                // guardamos ese token que nos llega
-                localStorage.setItem('jwt', data.jwt);
-                                    
-                // si es correcto el usuarios nos llega un token
-                // entoces lo guardamos en el deposito para ir a la siguiente pantalla
-                window.location.replace('./mis-tareas.html');
+                    window.location.replace('./mis-tareas.html')
+                    // window.location.href = './mis-tareas.html'
+                }else {
+                    form.reset();
+                    alert(data);
+                }
+            });
 
-            }else {
-                form.reset();
-                alert('Datos incorrectos');
-            };
-        });
-
-
-        // el bk no retorna un error correctamente, nosotros creamos el error en caso de un estatus distinto
         // fetch(url, config)
-        //     .then(res => res.status >= 400 ? throw new Error('Datos incorrectos') : res.json())
-        //     .then(data => {
-        //         // si es correcto el usuarios nos llega un token
-
-        //         // guardamos ese token que nos llega
-        //         localStorage.setItem('jwt', data.jwt);
-                                    
-        //         // redirigimos a la siguiente pantalla
-        //         window.location.replace('./mis-tareas.html');
+        //     .then((res) => {
+        //         if(res.status >= 400) throw new Error(res.statusText)
+        //         else res.json()
         //     })
-        //     .catch((error) => {
-        //         form.reset();
-        //         alert(error);
-        //     });
+        //     .then(data => {
+        //         console.log(data)
+        //     })
+        //     .catch(() => console.log('error'))
     };
 });

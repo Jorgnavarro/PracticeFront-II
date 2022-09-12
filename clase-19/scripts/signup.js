@@ -20,7 +20,7 @@ window.addEventListener('load', function () {
     /*                    FUNCIÓN 2: Realizar el signup [POST]                    */
     /* -------------------------------------------------------------------------- */
     function realizarRegister(settings) {
-        
+        const url = 'https://ctd-todo-api.herokuapp.com/v1/users';
 
 
 
