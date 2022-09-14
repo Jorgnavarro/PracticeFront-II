@@ -54,11 +54,9 @@ window.addEventListener('load', function () {
         // fetch(url, config)
         //     .then((res) => {
         //         if(res.status >= 400) throw new Error(res.statusText)
-        //         else res.json()
+        //         else return res.json()
         //     })
-        //     .then(data => {
-        //         console.log(data)
-        //     })
-        //     .catch(() => console.log('error'))
+        //     .then(data => console.log(data))
+        //     .catch((error) => console.log(error))
     };
 });
