@@ -105,6 +105,17 @@ main h2 {
 }
 
 /* ------------Tareas pendientes */
+.contenedor__tareas {
+    display: flex;
+    justify-content: space-around;
+}
+
+.contenedor__tareas-pendientes,
+.contenedor__tareas-finalizadas {
+    background-color: rgba(92, 92, 92, 0.624);
+    padding: 80px;
+}
+
 .tareas-pendientes .tarea {
     background-color: var(--app-grey);
     margin-bottom: .7rem;
@@ -135,6 +146,10 @@ main h2 {
     background-color: var(--verde);
 }
 
+.tareas-pendientes .tarea button:active {
+    background-color: var(--verde);
+}
+
 .tareas-pendientes .tarea .descripcion {
     padding: .3rem .5rem;
     flex-grow: 1;
@@ -157,6 +172,12 @@ main h2 {
 
 /* ------------Tareas terminadas */
 #cantidad-finalizadas {
+    background-color: var(--verde);
+    border-radius: 50vh;
+    padding: .1rem .5rem;
+}
+
+#cantidad-pendientes {
     background-color: var(--verde);
     border-radius: 50vh;
     padding: .1rem .5rem;
